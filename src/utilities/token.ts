@@ -8,7 +8,6 @@ export async function getMyToken() {
     const x = (await cookies()).get("next-auth.session-token")?.value
 
 
-
     const token = await decode({
 
         token: x,
@@ -18,7 +17,7 @@ export async function getMyToken() {
 
 
     })
-
+console.log(process.env.NEXTAUTH_SECRET,"process env at line 20");
     console.log(token,"Test at line 22");
 
     
