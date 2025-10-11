@@ -8,6 +8,11 @@ export async function getUserWishList() {
 
     const token = await getMyToken()
 
+    console.log(token, "from 11 get user wish ");
+
+
+
+
 
     if (!token) {
 

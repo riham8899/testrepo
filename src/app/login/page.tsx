@@ -97,7 +97,8 @@ function Login() {
         duration: 2000
       })
 
-      window.location.href = res.url || "/"
+      router.push(res.url || "/")
+
 
     }
     else {
