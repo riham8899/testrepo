@@ -23,7 +23,8 @@ export async function AddToCart(id: string) {
         productId: id
     }
 
-    
+        try {
+            
         const { data } = await axios.post("https://ecommerce.routemisr.com/api/v1/cart", values, {
 
 
@@ -33,15 +34,21 @@ export async function AddToCart(id: string) {
             },
 
         })
+    console.log(data,'line 40');
+
+    return data
+        } catch (error) {
+            console.log(error,"Error at line 39");
+        }
+
 
 
     
 
-    console.log(data,'line 40');
 
 
 
-    return data
+
 
 
 

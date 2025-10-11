@@ -17,14 +17,15 @@ export async function getMyToken() {
 
 
     })
-console.log(process.env.NEXTAUTH_SECRET,"process env at line 20");
-    console.log(token,"Test at line 22");
+    console.log(x, 'x at line 8');
+    console.log(process.env.NEXTAUTH_SECRET, "process env at line 20");
+    console.log(token, "Test at line 22");
 
     
 
 
 
-
+console.log(token, "test line 27");
     return token?.token
 
 
