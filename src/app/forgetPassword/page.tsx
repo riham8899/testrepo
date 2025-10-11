@@ -9,9 +9,11 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios'
 import { toast } from 'sonner';
 import Link from 'next/link'
-
+import { useRouter } from "next/navigation";
 
 export const forgetPassword = () => {
+
+    const router = useRouter();
 
     const form = useForm({
         defaultValues: {
@@ -38,7 +40,9 @@ export const forgetPassword = () => {
                     position: 'top-center'
                 })
 
-                    window.location.href =  "/VerifyResetCode"
+                    
+
+                        router.push("/VerifyResetCode")
 
 
             } else {
