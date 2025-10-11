@@ -25,7 +25,7 @@ console.log(process.env.NEXTAUTH_SECRET,"process env at line 20");
 
 
 
-    return token?.accessToken
+    return token?.token
 
 
 
