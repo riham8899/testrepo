@@ -97,7 +97,9 @@ function Login() {
         duration: 2000
       })
 
-      router.push(res.url || "/")
+      router.push("/")
+      
+      // router.push(res.url || "/")
 
 
     }
