@@ -9,7 +9,7 @@ export async function getUserOrders() {
 
     const token = await getMyToken()
 
-    const {id} = jwtDecode(token)
+    const {id} = jwtDecode(token) 
 
     if(!token){
         throw new Error ("loggg in ")

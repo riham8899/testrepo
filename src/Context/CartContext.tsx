@@ -4,7 +4,7 @@ import { clearCartAction } from '@/CartAction/clearCart'
 import { getUserCartAction } from '@/CartAction/getUserCart'
 import { removeCartItemAction } from '@/CartAction/removeCartItems'
 import { updateCartAction } from '@/CartAction/updateCart'
-import { Cart } from '@/types/cart.type'
+import { Cart, ProductCart } from '@/types/cart.type'
 import React, { createContext, useEffect, useState } from 'react'
 
 
@@ -20,7 +20,7 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
     const [numOfCart, setNumOFCart] = useState(0)
     const [totalOfCartPrice, setTotalOfCartPrice] = useState(0)
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState<ProductCart[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [cartId, setICartId] = useState("")
 
@@ -123,18 +123,19 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
             const data: Cart = await getUserCartAction()
             console.log(data);
-
-            setNumOFCart(data.numOfCartItems),
+                setNumOFCart(data.numOfCartItems),
                 setTotalOfCartPrice(data.data.totalCartPrice),
                 setProduct(data.data.products),
+                setICartId(data.cartId)
                 setIsLoading(false)
-            setICartId(data.cartId)
 
 
 
 
 
         } catch (error) {
+            setIsLoading(false)
+
             console.log(error);
 
 
