@@ -71,7 +71,7 @@ export const authOptions: AuthOptions = {
 
             if (user) {
                 token.user = user?.user
-                token.token = user?.token
+                token.accessToken = user?.token
             }
 
             console.log(user);
@@ -84,7 +84,7 @@ export const authOptions: AuthOptions = {
 
             if(token){
                 session.user =token?.user
-                // session.token = token?.token  as string
+                session.accessToken = token?.accessToken  as string
             }
 
 
