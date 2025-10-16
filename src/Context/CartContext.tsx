@@ -5,6 +5,7 @@ import { getUserCartAction } from '@/CartAction/getUserCart'
 import { removeCartItemAction } from '@/CartAction/removeCartItems'
 import { updateCartAction } from '@/CartAction/updateCart'
 import { Cart, ProductCart } from '@/types/cart.type'
+import { useSession } from 'next-auth/react'
 import React, { createContext, useEffect, useState } from 'react'
 
 
@@ -17,7 +18,7 @@ export const cartContext = createContext({})
 
 const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
-
+    const { data: session } = useSession()
     const [numOfCart, setNumOFCart] = useState(0)
     const [totalOfCartPrice, setTotalOfCartPrice] = useState(0)
     const [product, setProduct] = useState<ProductCart[]>([])
@@ -158,9 +159,13 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(function () {
 
-        getUserCart()
+        // getUserCart()
 
-    }, [])
+        if (session?.user) {
+            getUserCart()
+        }
+
+    }, [session])
 
 
 
