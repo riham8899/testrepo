@@ -21,7 +21,7 @@ export const authOptions: AuthOptions = {
 
 
             credentials: {
-                email: { label: "email", type: "email", placeholder: "..@gmail.com" },
+                email: { label: "email", type: "email", placeholder: "example@gmail.com" },
                 password: { label: "Password", type: "password" }
             },
 
@@ -41,34 +41,27 @@ export const authOptions: AuthOptions = {
                     headers: { "Content-Type": "application/json" }
                 })
 
-                const payloud = await respons.json()
+                const payload  = await respons.json()
 
 
-                console.log(payloud);
+                console.log(payload );
 
 
-                if (payloud.message === 'success') {
+                if (payload .message === 'success') {
 
-                    const { id }: { id: string } = jwtDecode(payloud.token)
+                    const { id }: { id: string } = jwtDecode(payload.token)
 
                     return {
                         id: id,
-                        user: payloud.user,
-                        token: payloud.token,
-                    }
-
-
-
-
-
-
-
+                        user: payload .user,
+                        token: payload .token,
+                    };
                 }
 
-                throw new Error(payloud.message)
+                throw new Error(payload .message);
 
             }
-        })
+        }),
     ],
 
 
@@ -91,7 +84,7 @@ export const authOptions: AuthOptions = {
 
             if(token){
                 session.user =token?.user
-                session.accessToken = token?.accessToken  as string
+                // session.accessToken = token?.accessToken  as string
             }
 
 
