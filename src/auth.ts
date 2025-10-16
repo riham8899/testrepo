@@ -58,7 +58,7 @@ export const authOptions: AuthOptions = {
                     };
                 }
 
-                throw new Error(payload .message);
+                throw new Error(payload.message);
 
             }
         }),
@@ -71,7 +71,7 @@ export const authOptions: AuthOptions = {
 
             if (user) {
                 token.user = user?.user
-                token.accessToken = user?.token
+                token.token = user?.token
             }
 
             console.log(user);
@@ -84,7 +84,7 @@ export const authOptions: AuthOptions = {
 
             if(token){
                 session.user =token?.user
-                // session.accessToken = token?.accessToken  as string
+                // session.token = token?.token  as string
             }
 
 

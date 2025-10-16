@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import axios from 'axios'
+
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 
