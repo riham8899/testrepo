@@ -32,7 +32,7 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
             const data = await AddToCart(id)
             console.log(data, 'line 33');
 
-            getUserCart()
+            await getUserCart()
             // console.log(data);
             return data
 
@@ -123,11 +123,11 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
             const data: Cart = await getUserCartAction()
             console.log(data);
-                setNumOFCart(data.numOfCartItems),
+            setNumOFCart(data.numOfCartItems),
                 setTotalOfCartPrice(data.data.totalCartPrice),
                 setProduct(data.data.products),
                 setICartId(data.cartId)
-                setIsLoading(false)
+            setIsLoading(false)
 
 
 
@@ -145,21 +145,24 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
     }
 
+
+    function afterPayment() {
+
+        setICartId("")
+
+        setNumOFCart(0),
+            setTotalOfCartPrice(0),
+            setProduct([])
+
+    }
+
     useEffect(function () {
 
         getUserCart()
 
     }, [])
 
-    function afterPayment() {
-        
-        setICartId("")
 
-        setNumOFCart(0),
-        setTotalOfCartPrice(0),
-        setProduct([])
-
-    }
 
 
     return (
@@ -173,6 +176,7 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
             updateCart,
             clearCart,
             cartId,
+            getUserCart,
             afterPayment
         }}>
             {children}
