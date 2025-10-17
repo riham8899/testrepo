@@ -74,7 +74,7 @@ const Cart = () => {
         <p className=' my-3 text-green-500'> Total Price :{totalOfCartPrice} EGP</p>
         <Button onClick={clearCart} className='cursor-pointer  bg-body text-red-700 hover:bg-red-700 hover:text-blue-50'><i className="fa-solid fa-trash-can"> </i>  Clear All Cart</Button>
         <Button className='cursor-pointer ms-5  bg-body text-green-700 hover:bg-green-700 hover:text-blue-50'> <i className="fa-solid fa-bag-shopping"></i>
-          <Link href={"/Payment"}>Payment</Link>
+          <Link href={"/payment"}>Payment</Link>
         </Button>
 
         <div className='all'>

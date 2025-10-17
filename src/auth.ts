@@ -41,24 +41,24 @@ export const authOptions: AuthOptions = {
                     headers: { "Content-Type": "application/json" }
                 })
 
-                const payload  = await respons.json()
+                const payloud   = await respons.json()
 
 
-                console.log(payload );
+                console.log(payloud  );
 
 
-                if (payload .message === 'success') {
+                if (payloud .message === 'success') {
 
-                    const { id }: { id: string } = jwtDecode(payload.token)
+                    const { id }: { id: string } = jwtDecode(payloud .token)
 
                     return {
                         id: id,
-                        user: payload .user,
-                        token: payload .token,
+                        user: payloud  .user,
+                        token: payloud  .token,
                     };
                 }
 
-                throw new Error(payload.message);
+                throw new Error(payloud .message);
 
             }
         }),
