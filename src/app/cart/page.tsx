@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import Payment from './../payment/page';
+
 import Link from 'next/link';
 
 
