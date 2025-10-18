@@ -5,6 +5,7 @@ import { getUserWishList } from "@/WishListAction/getUserWishList"
 import { removeProductFromWish } from "@/WishListAction/removeProductFromWish"
 import { createContext, useEffect, useState } from "react"
 import { WishListSuccess, WishProduct } from "./../../src/types/wishList.type"
+import { useSession } from 'next-auth/react';
 
 
 
@@ -21,16 +22,24 @@ export const wishListContext = createContext({} as {
     addProToWishList: (id: string) => Promise<any>
     removeWishListPro: (id: string) => Promise<any>
     getUserWishLIistPro: () => Promise<any>
+    numOfWishList: number;
 
 
 })
 
 const WishListContextProvidor = ({ children }: { children: React.ReactNode }) => {
+    const { data: session } = useSession()
 
-
+    const [numOfWishList, setNumOFWishList] = useState(0);
     const [addProduct, setAddProduct] = useState<WishProduct[]>([])
     // const [removeProduct, setRemoveProdchildrenuct] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
+
+      //  تحديث العدد تلقائي لما addProduct يتغير
+
+    useEffect(() => {
+        setNumOFWishList(addProduct.length);
+    }, [addProduct]);
 
     // add pro 
     async function addProToWishList(id: string) {
@@ -41,7 +50,11 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
             if (data?.data?.products) {
                 setAddProduct(data.data.products);
+                // setNumOFWishList(data.count)
+                
             }
+
+
 
 
             console.log("Add response:", data)
@@ -69,6 +82,8 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
             if (data.status === "success") {
 
                 setAddProduct((prev) => prev.filter((item) => item._id !== id))
+                // setNumOFWishList((prev) => (prev > 0 ? prev - 1 : 0))
+                // setNumOFWishList(data.count);
 
             }
             // setAddProduct(data.data.products)
@@ -100,7 +115,9 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
             const data: WishListSuccess = await getUserWishList()
             if (data?.status === "success" && Array.isArray(data?.data)) {
-                setAddProduct(data.data)
+                setAddProduct(data?.data)
+                // setNumOFWishList((prev) => prev)
+                // setNumOFWishList(data.count);
 
             } else {
                 setAddProduct([])
@@ -119,7 +136,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
             setAddProduct([])
 
         } finally {
-            setIsLoading(false) 
+            setIsLoading(false)
         }
 
 
@@ -129,10 +146,13 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
     useEffect(() => {
 
+        if (session?.accessToken) {
+            getUserWishLIistPro()
+        }
 
-        getUserWishLIistPro()
+        // getUserWishLIistPro()
 
-    }, [])
+    }, [session])
 
 
 
@@ -140,6 +160,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
     return (
 
         <wishListContext.Provider value={{
+            numOfWishList,
             addProduct,
             isLoading,
             setAddProduct,

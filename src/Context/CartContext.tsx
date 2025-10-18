@@ -25,7 +25,6 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [cartId, setICartId] = useState("");
 
-
     async function addProTocart(id: string) {
 
         try {
@@ -117,7 +116,7 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
 
     async function getUserCart() {
-        
+
         setIsLoading(true);
 
         try {
@@ -125,9 +124,9 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
             const data: Cart = await getUserCartAction();
 
             setNumOFCart(data.numOfCartItems);
-                setTotalOfCartPrice(data.data.totalCartPrice);
-                setProduct(data.data.products);
-                setICartId(data.cartId);
+            setTotalOfCartPrice(data.data.totalCartPrice);
+            setProduct(data.data.products);
+            setICartId(data.cartId);
             setIsLoading(false);
             console.log(data);
 
@@ -148,31 +147,28 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
     }
 
 
-    function afterPayment(){
+    function afterPayment() {
 
         setICartId("");
 
         setNumOFCart(0);
-            setTotalOfCartPrice(0);
-            setProduct([])
+        setTotalOfCartPrice(0);
+        setProduct([])
 
     }
 
 
 
 
-    useEffect(function() {
+    useEffect(function () {
 
-        getUserCart();
+        // getUserCart();
 
-        // if (session?.user) {
-        //     getUserCart()
-        // }
 
 
         if (session?.accessToken) {
-      getUserCart(); // دي الفانكشن اللي بتجيب بيانات الكارت
-    }
+            getUserCart();
+        }
 
     }, [session]);
 
@@ -181,16 +177,16 @@ const CartContextProvidor = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <cartContext.Provider value={{
-            numOfCart:numOfCart,
+            numOfCart: numOfCart,
             totalOfCartPrice,
             product,
             isLoading,
-            addProTocart:addProTocart,
+            addProTocart: addProTocart,
             removeProItems,
             updateCart,
             clearCart,
             cartId,
-            
+
             afterPayment
         }}>
             {children}

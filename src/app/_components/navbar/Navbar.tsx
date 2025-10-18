@@ -7,14 +7,16 @@ import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { cartContext } from '@/Context/CartContext';
 import { Badge } from "@/components/ui/badge";
+import { wishListContext } from '@/Context/wishListContext';
 
 
 
 export const Navbar = () => {
 
-    const { data: Session, status } = useSession()
+    const { data: Session, status } = useSession();
 
-    const { numOfCart } = useContext(cartContext)
+    const { numOfCart} = useContext(cartContext);
+    const { numOfWishList} = useContext(wishListContext);
 
 
 
@@ -39,12 +41,7 @@ export const Navbar = () => {
                                 Home
                             </Link>
                         </li>
-                        <li>
-                            <Link href="/cart">
 
-                                cart
-                            </Link>
-                        </li>
                         <li>
                             <Link href="/wishList">
                                 Wish List
@@ -98,7 +95,7 @@ export const Navbar = () => {
                         <i className="fa-brands fa-facebook mx-2"></i>
                         <i className="fa-brands fa-tiktok mx-2"></i>
                         <i className="fa-brands fa-twitter mx-2"></i>
-                        
+
                     </div>
                     {status === "authenticated" && <>
 
@@ -126,6 +123,15 @@ export const Navbar = () => {
 
 
 
+                        </div>
+
+                        <div>
+                            <Link href="/wishList">
+                            <Badge className='font-bold text-2xl bg-red-300 text-black'>
+                                <i className="fa-solid fa-heart text-red-700 "></i>{numOfWishList}
+                            </Badge>
+
+                            </Link>
                         </div>
                     </>}
                     {status === "unauthenticated" && <><div>
