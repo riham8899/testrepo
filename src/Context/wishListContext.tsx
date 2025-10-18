@@ -6,6 +6,8 @@ import { removeProductFromWish } from "@/WishListAction/removeProductFromWish"
 import { createContext, useEffect, useState } from "react"
 import { WishListSuccess, WishProduct } from "./../../src/types/wishList.type"
 import { useSession } from 'next-auth/react';
+import { toast } from "sonner"
+import { CheckCircleIcon } from "lucide-react"
 
 
 
@@ -35,7 +37,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
     // const [removeProduct, setRemoveProdchildrenuct] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
 
-      //  تحديث العدد تلقائي لما addProduct يتغير
+    //  تحديث العدد تلقائي لما addProduct يتغير
 
     useEffect(() => {
         setNumOFWishList(addProduct.length);
@@ -46,12 +48,25 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
         try {
 
+
+
             const data = await AddToWishList(id)
+
+            if (data.status === "success") {
+
+                toast.success(data.message, {
+                    duration: 1000,
+                    position: "top-center",
+                    icon: <CheckCircleIcon className="text-green-500" />
+                });
+
+                await getUserWishLIistPro();    // 👈 اعملي تحديث بعد الإضافة
+            }
 
             if (data?.data?.products) {
                 setAddProduct(data.data.products);
                 // setNumOFWishList(data.count)
-                
+
             }
 
 
@@ -81,6 +96,12 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
             if (data.status === "success") {
 
+                toast.success(data.message, {
+                duration: 1000,
+                position: "top-center",
+                icon: <CheckCircleIcon className="text-red-500" />
+            });
+
                 setAddProduct((prev) => prev.filter((item) => item._id !== id))
                 // setNumOFWishList((prev) => (prev > 0 ? prev - 1 : 0))
                 // setNumOFWishList(data.count);
@@ -91,7 +112,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
             return data
 
 
-            // setAddProduct(data.products)
+
 
 
         } catch (error) {
