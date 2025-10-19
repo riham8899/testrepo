@@ -6,8 +6,6 @@ import { removeProductFromWish } from "@/WishListAction/removeProductFromWish"
 import { createContext, useEffect, useState } from "react"
 import { WishListSuccess, WishProduct } from "./../../src/types/wishList.type"
 import { useSession } from 'next-auth/react';
-import { toast } from "sonner"
-import { CheckCircleIcon } from "lucide-react"
 
 
 
@@ -25,6 +23,7 @@ export const wishListContext = createContext({} as {
     removeWishListPro: (id: string) => Promise<any>
     getUserWishLIistPro: () => Promise<any>
     numOfWishList: number;
+    isInWish: (id: string) => boolean
 
 
 })
@@ -54,11 +53,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
             if (data.status === "success") {
 
-                toast.success(data.message, {
-                    duration: 1000,
-                    position: "top-center",
-                    icon: <CheckCircleIcon className="text-green-500" />
-                });
+
 
                 await getUserWishLIistPro();    // 👈 اعملي تحديث بعد الإضافة
             }
@@ -96,11 +91,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
             if (data.status === "success") {
 
-                toast.success(data.message, {
-                duration: 1000,
-                position: "top-center",
-                icon: <CheckCircleIcon className="text-red-500" />
-            });
+
 
                 setAddProduct((prev) => prev.filter((item) => item._id !== id))
                 // setNumOFWishList((prev) => (prev > 0 ? prev - 1 : 0))
@@ -164,6 +155,10 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
     }
 
+    function isInWish(id: string) {
+        return addProduct.some((item) => item._id === id);
+    }
+
 
     useEffect(() => {
 
@@ -187,7 +182,8 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
             setAddProduct,
             removeWishListPro,
             getUserWishLIistPro,
-            addProToWishList
+            addProToWishList,
+            isInWish
 
 
         }}>

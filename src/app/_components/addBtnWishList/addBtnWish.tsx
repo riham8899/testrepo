@@ -3,7 +3,7 @@ import { wishListContext } from '@/Context/wishListContext'
 import React, { useContext } from 'react'
 import { toast } from 'sonner'
 
-import { Heart } from "lucide-react";
+import { CheckCircleIcon, Heart } from "lucide-react";
 
 
 
@@ -35,10 +35,11 @@ const AddBtnWish = ({ id }: { id: string }) => {
         const data = await removeWishListPro(id)
 
         if (data?.status === "success") {
-          await getUserWishLIistPro() 
+          await getUserWishLIistPro()
           toast.success("Product removed successfully", {
             duration: 1000,
-            position: 'top-center'
+            position: 'top-center',
+            icon: <CheckCircleIcon className="text-red-500" />
           })
         }
       } else {
@@ -53,7 +54,8 @@ const AddBtnWish = ({ id }: { id: string }) => {
 
           toast.success("addd product tmam", {
             duration: 1000,
-            position: 'top-center'
+            position: 'top-center',
+            icon: <CheckCircleIcon className="text-green-500" />
           })
 
         }
