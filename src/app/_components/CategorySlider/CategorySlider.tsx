@@ -4,6 +4,7 @@ import SwiperCategory from '../SwiperCategory/SwiperCategory'
 import { Category } from '../../../types/product.type';
 
 
+
 const CategorySlider = async () => {
 
 
@@ -14,7 +15,7 @@ const CategorySlider = async () => {
 
     return (
         <div>
-            <SwiperCategory categories={data} />
+            <SwiperCategory categories ={data} />
         </div>
     )
 }

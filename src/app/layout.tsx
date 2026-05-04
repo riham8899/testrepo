@@ -5,6 +5,7 @@ import Navbar from './_components/navbar/Navbar';
 import "./../../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 import { Toaster } from "sonner";
 import Providers from "@/Providers";
+import Footer from "./footer/page";
 
 
 
@@ -32,12 +33,22 @@ export default function RootLayout({
   return (
 
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
 
         <Providers>
           <Toaster />
-          <Navbar />
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow"> {children}</main>
+
+            
+
+            <Footer />
+          </div>
+
+
+
+
         </Providers>
 
       </body>

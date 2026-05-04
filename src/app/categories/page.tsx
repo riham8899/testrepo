@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { Categorydata } from "./../../types/singleCategory.type"
+import { Categorydata } from "../../types/singleCategory.type"
 
 
 import Image from 'next/image';
 
 
-async function Catogries() {
+async function categories() {
 
   const respons = await fetch("https://ecommerce.routemisr.com/api/v1/categories")
   const data = await respons.json()
@@ -62,4 +62,4 @@ async function Catogries() {
   )
 }
 
-export default Catogries
+export default categories

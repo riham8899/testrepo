@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form';
 import axios from 'axios'
 import { toast } from 'sonner';
+import Footer from '../footer/page';
 
 
 export const logNewPassword = () => {
@@ -145,6 +146,7 @@ export const logNewPassword = () => {
 
                 </div>
             </div>
+            
         </div>
     )
 }

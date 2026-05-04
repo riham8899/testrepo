@@ -2,6 +2,7 @@ import { getUserOrders } from '@/apis/getUserOrders'
 import { CartItem, OneOrder, Orders } from '@/types/order.type';
 import Image from 'next/image';
 import React from 'react'
+import Footer from '../footer/page';
 
 const AllOrders = async () => {
 
@@ -55,6 +56,7 @@ const AllOrders = async () => {
 
 
             </div>
+            
         </div>
     )
 }

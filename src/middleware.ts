@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
 
     const authPage = ["/login", "/register","/forgetpassword", "/VerifyResetCode", "/lognNwPassword"]
 
-    const routes = ["/", "/cart", "/payment","/productDetails", "/catogries", "/brand" ,"/allorders" ]
+    const routes = ["/", "/cart", "/payment","/productDetails", "/categories", "/brand" ,"/allorders" ]
 
 
 
@@ -31,5 +31,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/", "/cart", "/productDetails", "/payment","/catogries", "/brand", "/login", "/register","/forgetpassword","/allOrders" ,"/VerifyResetCode" ,"/lognNwPassword"],
+    matcher: ["/", "/cart", "/productDetails", "/payment","/categories", "/brand", "/login", "/register","/forgetpassword","/allOrders" ,"/VerifyResetCode" ,"/lognNwPassword"],
 }

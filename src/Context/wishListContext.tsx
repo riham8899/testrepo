@@ -67,7 +67,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
 
 
-            console.log("Add response:", data)
+            // console.log("Add response:", data)
             return data
 
 
@@ -140,7 +140,7 @@ const WishListContextProvidor = ({ children }: { children: React.ReactNode }) =>
 
 
 
-            console.log("Wishlist loaded:", data.data);
+            // console.log("Wishlist loaded:", data.data);
 
 
         } catch (error) {

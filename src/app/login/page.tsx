@@ -117,7 +117,7 @@ function Login() {
   }
 
   return (
-    <div className='mx-auto px-5 md:px-0 w-full my-10 md:w-1/2'>
+    <div className='mx-auto px-5 md:px-0 w-full my-10 md:w-1/2 '>
       <h1 className='text-3xl text-center font-bold'>Login Now</h1>
       <div>
         <Form {...form}>

@@ -3,7 +3,7 @@ import { decode } from 'next-auth/jwt';
 import { cookies } from 'next/headers';
 
 
-export async function getMyToken(){
+export async function getMyToken() {
 
     const x = (await cookies()).get("__Secure-next-auth.session-token")?.value || (await cookies()).get("next-auth.session-token")?.value
 
@@ -17,15 +17,15 @@ export async function getMyToken(){
 
 
     })
-    console.log(x, 'x at line 8');
-    console.log(process.env.NEXTAUTH_SECRET, "process env at line 20");
-    console.log(token, "Test at line 22");
+    // console.log(x, 'x at line 8');
+    // console.log(process.env.NEXTAUTH_SECRET, "process env at line 20");
+    // console.log(token, "Test at line 22");
 
 
 
 
 
-    console.log(token, "test line 27");
+    // console.log(token, "test line 27");
     return token?.accessToken;
 
 

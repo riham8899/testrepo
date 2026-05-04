@@ -5,10 +5,10 @@ import axios from 'axios';
 
 export async function AddToCart(id: string) {
 
-    
+
     const token = await getMyToken()
 
-    console.log("TOKEN VALUE AT ADD TO CART.TS:", token);
+    // console.log("TOKEN VALUE AT ADD TO CART.TS:", token);
 
     if (!token) {
 
@@ -23,8 +23,8 @@ export async function AddToCart(id: string) {
         productId: id
     }
 
-        try {
-            
+    try {
+
         const { data } = await axios.post("https://ecommerce.routemisr.com/api/v1/cart", values, {
 
 
@@ -34,16 +34,16 @@ export async function AddToCart(id: string) {
             },
 
         })
-    console.log(data,'line 40');
+        // console.log(data,'line 40');
 
-    return data
-        } catch (error) {
-            console.log(error,"Error at line 39");
-        }
+        return data
+    } catch (error) {
+        console.log(error, "Error at line 39");
+    }
 
 
 
-    
+
 
 
 
