@@ -24,13 +24,13 @@ export const Navbar = () => {
 
 
     return (
-        <div className='bg-green-100 py-5 w-full md:w-[100%] flex flex-row md:flex-row justify-between md:justify-around md:px-5 items-center '>
+        <div className='bg-green-100 py-5 md:w-full w-12/12 flex  md:flex-row justify-between md:justify-around md:px-5 items-center mx-auto '>
             {status === "authenticated" && <>
-                <div>
+                <div className=' md:w-auto'>
 
                     <Link href="/" >
 
-                        <Image src={logo} alt="logo" className='w-full' />
+                        <Image src={logo} alt="logo" className=' md:w-full' />
                     </Link>
 
                 </div>
@@ -44,8 +44,8 @@ export const Navbar = () => {
                 {status === "authenticated" && <>
 
 
-                    <div className='flex flex-col md:flex-row gap-2 text-center ms-2'>
-                        <ul className='flex flex-row gap-2 text-sm md:font-bold md:gap-4'>
+                    <div className='flex  md:flex-row gap-2 text-center  '>
+                        <ul className='flex  flex-col md:flex-row gap-2 text-sm md:font-bold md:gap-4 sm:w6/12'>
                             <li>
                                 <Link href="/" className={pathname=== "/" ? " font-bold  transition hover:scale-105 bg-emerald-200 text-white border rounded-2xl p-2 ":" border-transparent hover:scale-105  hover:bg-emerald-200  transition-all duration-300  hover:border-emerald-200 hover:text-white border hover:rounded-2xl p-2 "}>
 
@@ -97,7 +97,7 @@ export const Navbar = () => {
 
             </div>
 
-            <div className='flex   md:flex-row gap-2'>
+            <div className='flex   md:flex-row '>
 
 
 
@@ -107,8 +107,8 @@ export const Navbar = () => {
 
 
 
-                    <div >
-                        <div className=' flex gap-1 justify-around items-center '>
+                    <div className=' flex-col'>
+                        <div className=' flex gap-1 justify-around items-center md:flex-row flex-col'>
                             <Link href="/cart">
                                 <Badge className=' text-black font-bold text-2xl bg-green-100' >
                                     <i className="fa-solid fa-cart-shopping text-2xl text-green-700 "></i>{numOfCart}
@@ -130,6 +130,7 @@ export const Navbar = () => {
 
 
                             </button>
+                            
                         </div>
 
 

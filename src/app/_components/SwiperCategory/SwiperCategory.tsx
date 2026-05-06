@@ -15,6 +15,20 @@ const SwiperCategory = ({ categories }: { categories: Category[] }) => {
             <Swiper
                 spaceBetween={0}
                 slidesPerView={6}
+                breakpoints={{
+                    0: {
+                        slidesPerView: 3, 
+                    },
+                    640: {
+                        slidesPerView: 3, 
+                    },
+                    768: {
+                        slidesPerView: 4, 
+                    },
+                    1024: {
+                        slidesPerView: 6, 
+                    },
+                }}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
                 loop={true}

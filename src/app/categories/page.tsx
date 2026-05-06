@@ -30,7 +30,7 @@ async function categories() {
       <div className='flex flex-wrap   gap-y-6 '>
 
         {data.data.map(function (category: Categorydata) {
-          return <div key={category._id} className=' w-[80px] sm:w-1/2 md:w-1/3  my-5 p-3 ' >
+          return <div key={category._id} className=' w-full sm:w-1/2 md:w-1/3  my-5 p-3 ' >
 
             <div className='flex flex-col items-center gap-4 shadow-md hover:shadow-green-500 transition duration-150 rounded-2xl '>
               <div>
