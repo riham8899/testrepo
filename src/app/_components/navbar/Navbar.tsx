@@ -97,7 +97,7 @@ export const Navbar = () => {
 
             </div>
 
-            <div className='flex   md:flex-row '>
+            <div className='flex   md:flex-row gap-3 '>
 
 
 
